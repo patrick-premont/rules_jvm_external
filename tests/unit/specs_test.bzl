@@ -187,8 +187,16 @@ def _exclusion_spec_list_to_json_test_impl(ctx):
     env = unittest.begin(ctx)
     asserts.equals(
         env,
-        "[{ \"group\": \"org.eclipse.aether\", \"artifact\": \"aether-api\" }, { \"group\": \"org.eclipse.aether\", \"artifact\": \"aether-util\" }]",
-        json.write_exclusion_spec_list([{"group": "org.eclipse.aether", "artifact": "aether-api"}, {"group": "org.eclipse.aether", "artifact": "aether-util"}]),
+        "[" +
+        "{ \"group\": \"org.eclipse.aether\", \"artifact\": \"aether-api\" }, " +
+        "{ \"group\": \"org.eclipse.aether\", \"artifact\": \"aether-util\" }" +
+        "]",
+        json.write_exclusion_spec_list(
+            [
+                {"group": "org.eclipse.aether", "artifact": "aether-api"},
+                {"group": "org.eclipse.aether", "artifact": "aether-util"},
+            ],
+        ),
     )
     return unittest.end(env)
 
